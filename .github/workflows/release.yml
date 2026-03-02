@@ -133,8 +133,8 @@ jobs:
     name: Publish to crates.io
     runs-on: ubuntu-latest
     permissions:
-      contents: read
       id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -144,5 +144,11 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - name: Publish
-        run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Authenticate with crates.io
+        id: auth
+        uses: rust-lang/crates-io-auth-action@v1
+
+      - name: Publish to crates.io
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
+        run: cargo publish --allow-dirty
