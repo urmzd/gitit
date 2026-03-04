@@ -7,14 +7,14 @@ floating_tags: true
 version_files:
   - Cargo.toml
 types:
-  - { type: feat, bump: minor }
-  - { type: fix, bump: patch }
-  - { type: perf, bump: patch }
-  - { type: docs }
-  - { type: refactor }
-  - { type: revert }
-  - { type: chore }
-  - { type: ci }
-  - { type: test }
-  - { type: build }
-  - { type: style }
+  - { name: feat, bump: minor }
+  - { name: fix, bump: patch }
+  - { name: perf, bump: patch }
+  - { name: docs }
+  - { name: refactor }
+  - { name: revert }
+  - { name: chore }
+  - { name: ci }
+  - { name: test }
+  - { name: build }
+  - { name: style }
