@@ -126,6 +126,18 @@ All options can be set via CLI flags or environment variables:
 3. **Tier 1 (exact match)** - If the state key matches a cached entry, return the stored plan instantly
 4. **Tier 2 (incremental)** - If no exact match but a recent entry shares >50% of files unchanged, inject the previous plan as hints for the AI
 
+## Agent Skill
+
+This project ships an [Agent Skill](https://github.com/vercel-labs/skills) for use with Claude Code, Cursor, and other compatible agents.
+
+**Install:**
+
+```sh
+npx skills add urmzd/gitit
+```
+
+Once installed, use `/gitit` to generate commits, review code, create branch names, and draft PRs with AI assistance.
+
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE).
