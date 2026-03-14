@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0 (2026-03-14)
+
+### Miscellaneous
+
+- apply cargo fmt to resolve CI formatting check failure ([a1ddc1c](https://github.com/urmzd/gitit/commit/a1ddc1c3b1c88817e275295d0e2c423ee36ab264))
+- add .claude/ to .gitignore ([3ae0ebc](https://github.com/urmzd/gitit/commit/3ae0ebcce1b2efba9d84ad4339d24302694fbb93))
+- add AGENTS.md and agent skill for Claude Code ([b25b779](https://github.com/urmzd/gitit/commit/b25b779590d5c5b6e995c74b053033f9eb0b6df7))
+- **ai**: add GitHub Copilot backend via gh copilot CLI ([4725d7c](https://github.com/urmzd/gitit/commit/4725d7c84680c32b864b2d2f40a92fd56311fb13))
+
+
 ## 0.1.0 (2026-03-04)
 
 ### Miscellaneous
