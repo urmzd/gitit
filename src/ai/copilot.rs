@@ -197,10 +197,7 @@ mod tests {
     #[test]
     fn extract_with_whitespace() {
         let input = "  \n  {\"key\": \"value\"}  \n  ";
-        assert_eq!(
-            extract_json(input),
-            Some(r#"{"key": "value"}"#.to_string())
-        );
+        assert_eq!(extract_json(input), Some(r#"{"key": "value"}"#.to_string()));
     }
 
     // --- build_system_prompt tests ---

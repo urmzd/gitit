@@ -47,15 +47,14 @@ pub async fn resolve_backend(config: &BackendConfig) -> Result<Box<dyn AiBackend
     let gemini = gemini::GeminiBackend::new(config.model.clone(), config.debug);
 
     // Helper: try all backends in order, returning the first available one
-    let try_fallbacks =
-        |backends: Vec<Box<dyn AiBackend>>| async move {
-            for backend in backends {
-                if backend.is_available().await {
-                    return Ok(backend);
-                }
+    let try_fallbacks = |backends: Vec<Box<dyn AiBackend>>| async move {
+        for backend in backends {
+            if backend.is_available().await {
+                return Ok(backend);
             }
-            anyhow::bail!(crate::error::GitAiError::NoBackendAvailable)
-        };
+        }
+        anyhow::bail!(crate::error::GitAiError::NoBackendAvailable)
+    };
 
     match preferred {
         Some(Backend::Claude) => {
@@ -79,8 +78,6 @@ pub async fn resolve_backend(config: &BackendConfig) -> Result<Box<dyn AiBackend
             eprintln!("Warning: gemini CLI not found, falling back...");
             try_fallbacks(vec![Box::new(claude), Box::new(copilot)]).await
         }
-        None => {
-            try_fallbacks(vec![Box::new(claude), Box::new(copilot), Box::new(gemini)]).await
-        }
+        None => try_fallbacks(vec![Box::new(claude), Box::new(copilot), Box::new(gemini)]).await,
     }
 }
